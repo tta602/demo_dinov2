@@ -10,9 +10,9 @@ model = AutoModel.from_pretrained("facebook/dinov2-base").to(device)
 model.eval()
 
 # Load FAISS index + embeddings
-index = faiss.read_index("oxford_index.bin")
+index = faiss.read_index("core/oxford_index.bin")
 
 import json
-with open("oxford_embeddings.json") as f:
+with open("core/oxford_embeddings.json") as f:
     all_embeddings = json.load(f)
 img_paths = list(all_embeddings.keys())

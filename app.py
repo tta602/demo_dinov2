@@ -1,11 +1,11 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Query
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import numpy as np
 from io import BytesIO
-from model import index, img_paths
-from utils import extract_embedding
+from core.model import index, img_paths
+from core.utils import extract_embedding
 from fastapi.responses import FileResponse
 
 import os
@@ -31,9 +31,15 @@ def get_image(image_path: str):
     return FileResponse(full_path)
 
 @app.post("/search")
-async def search(file: UploadFile = File(...), top_k: int = 5):
+async def search(
+    file: UploadFile = File(...),
+    top_k: int = Query(5, alias="k")  # <- lấy từ query string: ?k=10
+):
     image = Image.open(BytesIO(await file.read()))
     embedding = extract_embedding(image)
     D, I = index.search(embedding, k=top_k)
-    results = [{"image_path": img_paths[i], "distance": float(D[0][j])} for j, i in enumerate(I[0])]
+    results = [
+        {"image_path": img_paths[i], "distance": float(D[0][j])}
+        for j, i in enumerate(I[0])
+    ]
     return JSONResponse(content={"results": results})

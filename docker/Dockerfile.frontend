@@ -1,0 +1,10 @@
+# docker/Dockerfile.frontend
+FROM nginx:alpine
+
+# Copy build
+COPY ui_app/build/web /usr/share/nginx/html
+
+# Replace default nginx config
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80

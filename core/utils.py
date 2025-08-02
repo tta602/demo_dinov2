@@ -1,6 +1,6 @@
 from PIL import Image
 import torch
-from model import processor, model, device
+from core.model import processor, model, device
 
 def extract_embedding(image: Image.Image):
     image = image.convert("RGB").resize((224, 224))
