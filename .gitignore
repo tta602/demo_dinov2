@@ -1,1 +1,4 @@
 *.tgz
+/collection/images
+/collection/gtruth
+.venv
