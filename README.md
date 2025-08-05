@@ -33,7 +33,7 @@ mv *.txt collection/gtruth/
 Use the provided notebook to extract image embeddings:
 
 ```bash
-jupyter notebook build_embeddings.ipynb
+jupyter notebook extract_embedding.ipynb
 ```
 
 > You can also convert the notebook to `.py` and run it as a script.
@@ -110,6 +110,8 @@ project/
 │   └── nginx.conf                 # Nginx config with proxy_pass
 ├── docker-compose.yml             # Docker Compose configuration
 ├── requirements.txt               # Python dependencies
+├── evaluate_metrics.ipynb         # Evaluate MAP@k, Precision@k for retrieval
+├── extract_embedding.ipynb        # Generate and save image embeddings using DINOv2
 └── README.md
 ```
 
