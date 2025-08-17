@@ -1,0 +1,10 @@
+dataset
+https://www.robots.ox.ac.uk/~vgg/data/oxbuildings/
+
+code + github (backend, front end)
+https://github.com/tta602/demo_dinov2.git
+
+code + driver (xuất file embedding, đánh giá)
+https://drive.google.com/drive/folders/19ZsqBxsoSkTHV4G6ORbBtOmQm6Nu3gc-?usp=sharing
+
+
